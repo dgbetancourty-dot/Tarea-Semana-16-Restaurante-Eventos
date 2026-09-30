@@ -1,9 +1,17 @@
 class Usuario:
+    ROLES_VALIDOS = (
+        "Administrador",
+        "Empleado",
+        "Cliente"
+    )
+
     def __init__(
         self,
         identificacion: str,
         nombre: str,
-        correo: str
+        correo: str,
+        usuario: str,
+        rol: str
     ) -> None:
 
         if not identificacion.strip():
@@ -26,9 +34,21 @@ class Usuario:
                 "El correo electrónico no es válido."
             )
 
+        if not usuario.strip():
+            raise ValueError(
+                "El usuario no puede estar vacío."
+            )
+
+        if rol not in self.ROLES_VALIDOS:
+            raise ValueError(
+                "El rol seleccionado no es válido."
+            )
+
         self._identificacion = identificacion.strip()
         self._nombre = nombre.strip()
         self._correo = correo.strip()
+        self._usuario = usuario.strip()
+        self._rol = rol
 
     @property
     def identificacion(self) -> str:
@@ -42,11 +62,21 @@ class Usuario:
     def correo(self) -> str:
         return self._correo
 
+    @property
+    def usuario(self) -> str:
+        return self._usuario
+
+    @property
+    def rol(self) -> str:
+        return self._rol
+
     def a_diccionario(self) -> dict:
         return {
             "identificacion": self._identificacion,
             "nombre": self._nombre,
-            "correo": self._correo
+            "correo": self._correo,
+            "usuario": self._usuario,
+            "rol": self._rol
         }
 
     def mostrar_informacion(self) -> None:
@@ -55,3 +85,5 @@ class Usuario:
         )
         print(f"Nombre: {self._nombre}")
         print(f"Correo: {self._correo}")
+        print(f"Usuario: {self._usuario}")
+        print(f"Rol: {self._rol}")

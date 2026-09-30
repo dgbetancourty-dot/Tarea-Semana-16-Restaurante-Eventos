@@ -39,31 +39,55 @@ class ArchivoServicio:
             )
 
     def cargar_productos(self):
-        return self.cargar_json("productos.json")
+        return self.cargar_json(
+            "productos.json"
+        )
 
     def cargar_usuarios(self):
-        return self.cargar_json("usuarios.json")
+        return self.cargar_json(
+            "usuarios.json"
+        )
+
+    def cargar_ventas(self):
+        return self.cargar_json(
+            "ventas.json"
+        )
 
     def guardar_productos(self, productos):
         datos = []
 
         for producto in productos:
-            datos.append(producto.a_diccionario())
+            datos.append(
+                producto.a_diccionario()
+            )
 
         self.guardar_json(
             "productos.json",
             datos
         )
-    def cargar_ventas(self):
-        return self.cargar_json("ventas.json")
+
+    def guardar_usuarios(self, usuarios):
+        datos = []
+
+        for usuario in usuarios:
+            datos.append(
+                usuario.a_diccionario()
+            )
+
+        self.guardar_json(
+            "usuarios.json",
+            datos
+        )
 
     def guardar_ventas(self, ventas):
         datos = []
 
         for venta in ventas:
-            datos.append(venta.a_diccionario())
+            datos.append(
+                venta.a_diccionario()
+            )
 
         self.guardar_json(
             "ventas.json",
             datos
-        )    
+        )

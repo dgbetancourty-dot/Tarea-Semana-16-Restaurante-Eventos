@@ -43,6 +43,7 @@ class Aplicacion:
         )
 
         self.vista_actual = None
+        self.usuario_autenticado = None
 
         self.mostrar_login()
 
@@ -53,19 +54,24 @@ class Aplicacion:
     def mostrar_login(self):
         self.limpiar_vista()
 
+        self.usuario_autenticado = None
+
         self.vista_actual = LoginView(
             self.ventana,
             self.restaurante_servicio,
             self.mostrar_main
         )
 
-    def mostrar_main(self):
+    def mostrar_main(self, usuario_autenticado):
         self.limpiar_vista()
+
+        self.usuario_autenticado = usuario_autenticado
 
         self.vista_actual = MainView(
             self.ventana,
             self.restaurante_servicio,
-            self.mostrar_login
+            self.mostrar_login,
+            self.usuario_autenticado
         )
 
     def ejecutar(self):

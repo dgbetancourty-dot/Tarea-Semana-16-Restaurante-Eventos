@@ -65,18 +65,22 @@ class LoginView:
             )
             return
 
-        acceso = self.restaurante_servicio.validar_acceso(
-            usuario,
-            contrasena
+        usuario_autenticado = (
+            self.restaurante_servicio.validar_acceso(
+                usuario,
+                contrasena
+            )
         )
 
-        if acceso:
+        if usuario_autenticado is not None:
             messagebox.showinfo(
                 "Acceso",
                 "Ingreso correcto."
             )
 
-            self.mostrar_main()
+            self.mostrar_main(
+                usuario_autenticado
+            )
 
         else:
             messagebox.showerror(

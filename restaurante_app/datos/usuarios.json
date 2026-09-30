@@ -2,6 +2,8 @@
     {
         "identificacion": "1001",
         "nombre": "Dennis",
-        "correo": "dennis@gmail.com"
+        "correo": "dennis@gmail.com",
+        "usuario": "Dennis",
+        "rol": "Administrador"
     }
 ]
